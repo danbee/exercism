@@ -14,11 +14,11 @@ class Bob
   end
 
   def question?(string)
-    string.match(/\?$/)
+    string.end_with?('?')
   end
 
   def shouting?(string)
-    string.match(/^[^a-z]+$/) && string.match(/[A-Z]+/)
+    string.upcase == string
   end
 
 end
