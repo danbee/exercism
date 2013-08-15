@@ -1,24 +1,33 @@
 class Bob
 
-  def hey(string)
-    return 'Fine. Be that way.' if blank?(string)
-    return 'Sure.' if question?(string)
-    return 'Woah, chill out!' if shouting?(string)
-    'Whatever.'
+  def hey(s)
+    statement = Statement.new(s)
+    case
+    when statement.silence?  then 'Fine. Be that way.'
+    when statement.question? then 'Sure.'
+    when statement.shouting? then 'Woah, chill out!'
+    else 'Whatever.'
+    end
   end
 
   private
 
-  def blank?(string)
-    string.nil? || string.empty?
-  end
+  class Statement
+    def initialize(s)
+      @s = s
+    end
 
-  def question?(string)
-    string.end_with?('?')
-  end
+    def silence?
+      @s.nil? || @s.empty?
+    end
 
-  def shouting?(string)
-    string.upcase == string
+    def question?
+      @s.end_with?('?')
+    end
+
+    def shouting?
+      @s.upcase == @s
+    end
   end
 
 end
