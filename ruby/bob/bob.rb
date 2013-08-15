@@ -13,20 +13,20 @@ class Bob
   private
 
   class Statement
-    def initialize(s)
-      @s = s
+    def initialize(statement)
+      @statement = statement.to_s
     end
 
     def silence?
-      @s.nil? || @s.empty?
+      @statement.nil? || @statement.empty?
     end
 
     def question?
-      @s.end_with?('?')
+      @statement.end_with?('?')
     end
 
     def shouting?
-      @s.upcase == @s
+      @statement.upcase == @statement
     end
   end
 
