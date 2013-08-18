@@ -12,6 +12,6 @@ class Phrase
   private
 
   def words
-    @text.downcase.scan(/[a-z0-9]+/)
+    @text.downcase.scan(/\w+/)
   end
 end
