@@ -1,30 +1,21 @@
 class Anagram
   def initialize(word)
-    @word = Word.new(word)
+    @word = word.downcase
   end
 
   def match(words)
-    words.each_with_object([]) do |word, matches|
+    words.map(&:downcase).each_with_object([]) do |word, matches|
       matches << word if @word.is_anagram_of?(word)
     end
   end
+end
 
-  private
-
-  class Word
-    def initialize(word)
-      @word = word.downcase
-    end
-
-    def is_anagram_of?(word)
-      @word != word && normalise(@word) == normalise(word)
-    end
-
-    private
-
-    def normalise(word)
-      word.chars.sort.join
-    end
+class String
+  def is_anagram_of?(word)
+    self != word && sort_chars == word.sort_chars
   end
 
+  def sort_chars
+    chars.sort.join
+  end
 end
