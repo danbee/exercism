@@ -5,7 +5,7 @@ class Anagram
 
   def match(words)
     words.map(&:downcase).each_with_object([]) do |word, matches|
-      matches << word if @word.is_anagram_of?(word)
+      matches << word if word.is_anagram_of?(@word)
     end
   end
 end
