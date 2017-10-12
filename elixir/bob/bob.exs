@@ -8,15 +8,15 @@ defmodule Bob do
     end
   end
 
-  def silence?(input) do
+  defp silence?(input) do
     String.strip(input) == ""
   end
 
-  def question?(input) do
+  defp question?(input) do
     String.ends_with?(input, "?")
   end
 
-  def shouting?(input) do
+  defp shouting?(input) do
     input == String.upcase(input) && input != String.downcase(input)
   end
 end
